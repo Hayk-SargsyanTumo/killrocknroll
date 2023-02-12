@@ -1,8 +1,7 @@
-class GrassEater{
+class zawarudo{
     constructor(x,y){
         this.x = x;
         this.y = y;
-        this.energy = 8;
         this.directions = []
     }
     //getting new coordinates for neighbor cells
@@ -18,7 +17,6 @@ class GrassEater{
             [this.x + 1, this.y + 1]
         ];
     }
-    // choosing cell between empty(0) and grass(1)
     chooseCell(character) {
         this.getNewCoordinates()
         var found = [];
@@ -31,10 +29,18 @@ class GrassEater{
                 found.push(this.directions[i]);
             }
          }
-        }
+    }
         return found;
-     
-     }
+}
+}
+
+class GrassEater extends zawarudo{
+    constructor(x,y){
+        super(x,y)
+        this.energy = 8;
+    }
+    
+
      die(){
         matrix[this.y][this.x] = 0;
         for (var i in grassEatArr) {
