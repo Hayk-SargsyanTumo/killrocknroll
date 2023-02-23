@@ -1,7 +1,7 @@
 class Predator extends zawarudo{
   constructor(x,y){
       super(x,y)
-      this.energy = 4;
+      this.energy = 12;
   }
      die(){
         matrix[this.y][this.x] = 0;

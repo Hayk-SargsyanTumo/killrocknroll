@@ -1,4 +1,5 @@
-var express = require('express')
+var express = require('express');
+const { fstat } = require('fs');
 var app = express();
 var server = require('http').createServer(app)
 var io = require('socket.io')(server)
@@ -18,7 +19,10 @@ io.on('connection',(socket)=>{
     socket.on('newMessage', (msg)=>{
       messages.push(msg)
       io.sockets.emit('display', msg)
+      const data = JSON.stringify(messages)
+      fs.writeFileSync('data.json', data)
     })
-})
+    
+  })
 
 server.listen(3000)

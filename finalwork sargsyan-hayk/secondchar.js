@@ -1,7 +1,7 @@
 class secondchar extends zawarudo{
    constructor(x,y){
        super(x,y)
-       this.energy = 8;
+       this.energy = 4;
    }
 
 
@@ -24,7 +24,7 @@ if (newCell) { //[3,4]
 var newGrassEater = new secondchar(newCell[0], newCell[1]);
 secondcharArr.push(newGrassEater);
 matrix[newCell[1]][newCell[0]] = 5;
-this.energy = 6;
+this.energy = 4;
         }
     }
 }

@@ -93,11 +93,11 @@ function setup() {
             }
         }
     }
-    matrixGenerator(20, 200, 20, 20, 20, 10, 100, 20)
+    matrixGenerator(30, 500, 50, 20, 20, 5, 200, 75)
     frameRate(5);
     createCanvas(matrix[0].length * side, matrix.length * side);
     background('#acacac');
-
+    
 
 
     // filling array with automatic created grass objects within 0,1
@@ -190,3 +190,4 @@ function draw() {
         newGrassEatArr[i].mul();
     }
 }
+
