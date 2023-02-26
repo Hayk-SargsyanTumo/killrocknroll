@@ -10,94 +10,90 @@ var secondcharArr = [];
 var newGrassArr = [];
 var newGrassEatArr = [];
 
-function setup() {
+function matrixGenerator(size, countGrass, countGrassEater, predatorCount, secondcharCount, newgrcount, newgreatcount, firstcharCount) {
+    for (let i = 0; i < size; i++) {
+        matrix.push([])
+        for (let j = 0; j < size; j++) {
+            matrix[i].push(0)
+        }
 
-    function matrixGenerator(size, countGrass, countGrassEater, predatorCount, firstcharCount, secondcharCount, newgrcount, newgreatcount) {
-        for (let i = 0; i < size; i++) {
-            matrix.push([])
-            for (let j = 0; j < size; j++) {
-                matrix[i].push(0)
-            }
-
-        }
-        for (let k = 0; k < countGrass; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 1
-            }
-            else {
-                k--
-            }
-
-
-        }
-        for (let k = 0; k < countGrassEater; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 2
-            }
-            else {
-                k--
-            }
-        }
-        for (let k = 0; k < firstcharCount; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 4
-            }
-            else {
-                k--
-            }
-        }
-        for (let k = 0; k < secondcharCount; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 5
-            }
-            else {
-                k--
-            }
-        }
-        for (let k = 0; k < predatorCount; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 3
-            }
-            else {
-                k--
-            }
-        }
-        for (let k = 0; k < newgrcount; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 6
-            }
-            else {
-                k--
-            }
-        }
-        for (let k = 0; k < newgreatcount; k++) {
-            let x = Math.floor(random(size))
-            let y = Math.floor(random(size))
-            if (matrix[y][x] == 0) {
-                matrix[y][x] = 7
-            }
-            else {
-                k--
-            }
+    }
+    for (let k = 0; k < countGrass; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 1
         }
     }
-    matrixGenerator(30, 500, 50, 20, 20, 5, 200, 75)
+    for (let k = 0; k < countGrassEater; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 2
+        }
+    }
+    for (let k = 0; k < firstcharCount; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+        }
+
+    }
+    for (let k = 0; k < secondcharCount; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+        }
+
+    }
+    for (let k = 0; k < predatorCount; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+        }
+
+    }
+    for (let k = 0; k < newgrcount; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 6
+        }
+
+    }
+    for (let k = 0; k < newgreatcount; k++) {
+        let x = Math.floor(random(size))
+        let y = Math.floor(random(size))
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 7
+        }
+
+    }
+}
+var hndzvor = 0;
+var btn = document.querySelector('#btn')
+btn.addEventListener('click',()=>{
+    hndzvor = 20;
+})
+function createWorld() {
+    matrixGenerator(30, 500, 50, 50, 50, 20, 200, 75, hndzvor)
+    createCanvas(30 * side, 30 * side);
+}
+   
+
+
+
+function setup() {
+  
+createWorld()
+
     frameRate(5);
-    createCanvas(matrix[0].length * side, matrix.length * side);
+
     background('#acacac');
-    
+
 
 
     // filling array with automatic created grass objects within 0,1
@@ -126,6 +122,7 @@ function setup() {
 
 
 function draw() {
+
     //drawing the area with matrix info
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
@@ -186,7 +183,7 @@ function draw() {
     for (let i in newGrassEatArr) {
         newGrassEatArr[i].eat();
     }
-    for (let i in newGrassEatArr){
+    for (let i in newGrassEatArr) {
         newGrassEatArr[i].mul();
     }
 }
